@@ -112,6 +112,45 @@ var taiyaki = Taiyaki()
 taiyaki.nakami = "クリーム"
 taiyaki.sayNakami()
 
+// inheritance 継承(けいしょう) 继承
+// override オーバーライド 重写
+class Car {
+    var distance = 0
+    func stop() {
+        println("stopped!")
+    }
+}
+
+class SportsCar: Car {
+    func drive() {
+        distance += 10
+    }
+    override func stop() {
+        print("SportsCar ")
+        super.stop()
+    }
+}
+
+class Trunk: Car {
+    func drive() {
+        distance += 5
+    }
+}
+
+var sportsCar = SportsCar()
+sportsCar.drive()
+sportsCar.stop()
+
+// nil オプショナル型
+var age1:Int? = nil
+age1 = 25
+println(age1! + 1)   //println(age1 + 1) error
+
+var age2:Int!        //var age2:Int! = nil
+age2 = 25
+println(age2 + 1)
+
+
 
 
 
