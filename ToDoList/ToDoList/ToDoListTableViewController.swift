@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import iAd
 
 class ToDoListTableViewController: UITableViewController {
     
@@ -20,6 +21,8 @@ class ToDoListTableViewController: UITableViewController {
         self.loadToDoItems()
         
         NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "_reloadTableView", userInfo: nil, repeats: true)
+        
+        self.canDisplayBannerAds = true
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

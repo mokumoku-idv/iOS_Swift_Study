@@ -16,6 +16,7 @@
 		4479AC901AD25F2E00598BC8 /* AddToDoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4479AC8F1AD25F2E00598BC8 /* AddToDoItemViewController.swift */; };
 		4479AC921AD25FFA00598BC8 /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4479AC911AD25FFA00598BC8 /* ToDoListTableViewController.swift */; };
 		4479AC941AD2623D00598BC8 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4479AC931AD2623D00598BC8 /* ToDoItem.swift */; };
+		4479AC961AD3D2E700598BC8 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4479AC951AD3D2E700598BC8 /* iAd.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		4479AC8F1AD25F2E00598BC8 /* AddToDoItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToDoItemViewController.swift; sourceTree = "<group>"; };
 		4479AC911AD25FFA00598BC8 /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
 		4479AC931AD2623D00598BC8 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		4479AC951AD3D2E700598BC8 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4479AC961AD3D2E700598BC8 /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +68,7 @@
 		4479AC5E1AD2584900598BC8 = {
 			isa = PBXGroup;
 			children = (
+				4479AC951AD3D2E700598BC8 /* iAd.framework */,
 				4479AC691AD2584900598BC8 /* ToDoList */,
 				4479AC821AD2584900598BC8 /* ToDoListTests */,
 				4479AC681AD2584900598BC8 /* Products */,
