@@ -150,9 +150,35 @@ var age2:Int!        //var age2:Int! = nil
 age2 = 25
 println(age2 + 1)
 
+// closure クロージャ 闭包
+//{() -> Void in
+//    println("closure")
+//}
+//{println("closure")}
 
+//{(base: Int, height: Int) -> Int in
+//    let area = base * height / 2
+//    return area
+//}
 
+// protocal プロトコル 协议
+protocol KyotoProtocol {
+    func stopGlobalWarming()
+}
 
+@objc protocol KyotoProtocol2 {
+    func stopGlobalWarming()
+    optional func chargeCarbonTax()
+}
 
+class Japan: KyotoProtocol2 {
+    func stopGlobalWarming() {
+        println("use green energy")
+        println("plant forest")
+    }
+}
+
+var country: KyotoProtocol2 = Japan()
+var country2: protocol<KyotoProtocol, KyotoProtocol2>
 
 
