@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SNS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6T-RN-k7d">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="PHM-V4-eEw">
+                                        <connections>
+                                            <action selector="showActivityView:" destination="BYZ-38-t0r" id="yy1-vu-AfS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="camera" id="yIK-Ld-RjB">
+                                        <connections>
+                                            <action selector="launchCamera:" destination="BYZ-38-t0r" id="EgP-11-Uj0"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="album" id="ryS-J3-VJK">
+                                        <connections>
+                                            <action selector="launchAlbum:" destination="BYZ-38-t0r" id="gQ8-WQ-8Cq"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="polarbear01.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Pf3-CY-6GO">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pf3-CY-6GO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="6m4-pe-mpa"/>
+                            <constraint firstItem="N6T-RN-k7d" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="7go-it-7Io"/>
+                            <constraint firstItem="N6T-RN-k7d" firstAttribute="trailing" secondItem="Pf3-CY-6GO" secondAttribute="trailing" id="8jD-Yc-Hgb"/>
+                            <constraint firstItem="Pf3-CY-6GO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Xj9-MT-jji"/>
+                            <constraint firstAttribute="trailing" secondItem="Pf3-CY-6GO" secondAttribute="trailing" id="Zia-zW-R1K"/>
+                            <constraint firstItem="Pf3-CY-6GO" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="-44" id="aTt-m2-sBb"/>
+                            <constraint firstItem="Pf3-CY-6GO" firstAttribute="leading" secondItem="N6T-RN-k7d" secondAttribute="leading" id="mER-Yf-yrG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Pf3-CY-6GO" id="BHn-ZG-J05"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="polarbear01.jpg" width="800" height="937"/>
+    </resources>
+</document>

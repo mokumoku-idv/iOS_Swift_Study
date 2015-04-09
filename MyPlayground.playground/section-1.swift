@@ -141,6 +141,13 @@ var sportsCar = SportsCar()
 sportsCar.drive()
 sportsCar.stop()
 
+// class method 
+class ClassMethod {
+    class func classMethod() {
+        println("This is class method")
+    }
+}
+
 // nil オプショナル型
 var age1:Int? = nil
 age1 = 25
@@ -180,5 +187,52 @@ class Japan: KyotoProtocol2 {
 
 var country: KyotoProtocol2 = Japan()
 var country2: protocol<KyotoProtocol, KyotoProtocol2>
+
+// enumeration 列挙(れっきょ)体 枚举
+enum Week {
+    case Monday
+    case Tuesday
+    case Wednesday
+    case Thursday
+    case Friday
+    case Saturday
+    case Sunday
+}
+
+var today = Week.Monday
+var tomorrow: Week = .Tuesday
+
+enum Week2 : Int {
+    case Monday
+    case Tuesday
+    case Wednesday
+    case Thursday
+    case Friday
+    case Saturday
+    case Sunday
+}
+
+println(Week2.Sunday.rawValue)
+
+// delegate デリゲート 代理
+protocol LawyerLicense {
+    func defend()
+}
+
+class Lawyer: LawyerLicense {
+    func defend() {
+        println("defend!")
+    }
+}
+
+class Defender {
+    //var delegate2: Lawyer?
+    var delegate: LawyerLicense?
+}
+
+let taro = Defender()
+taro.delegate = Lawyer()
+taro.delegate?.defend()
+
 
 
