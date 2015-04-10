@@ -37,7 +37,7 @@ class AddToDoItemViewController: UIViewController {
         if (sender as? UIBarButtonItem != self.saveButton) {
             return
         }
-        if (countElements(self.textField.text) > 0) {
+        if (count(self.textField.text) > 0) {
             self.toDoItem = ToDoItem(itemName: self.textField.text)
         }
     }

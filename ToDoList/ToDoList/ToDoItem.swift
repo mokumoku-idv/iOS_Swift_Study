@@ -37,9 +37,9 @@ class ToDoItem: NSObject, NSCoding {
     
     required init(coder decoder: NSCoder) {
         super.init()
-        itemName = decoder.decodeObjectForKey(kItemName) as String
+        itemName = decoder.decodeObjectForKey(kItemName) as! String
         completed = decoder.decodeBoolForKey(kCompleted)
-        creationDate = decoder.decodeObjectForKey(kCreationDate) as NSDate
+        creationDate = decoder.decodeObjectForKey(kCreationDate) as! NSDate
     }
     
     func encodeWithCoder(encoder: NSCoder) {

@@ -51,7 +51,7 @@ class ToDoListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell", forIndexPath: indexPath) as! UITableViewCell
 
         // Configure the cell...
         var toDoItem = self.toDoItems[indexPath.row]
@@ -115,7 +115,7 @@ class ToDoListTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToList(seque: UIStoryboardSegue) {
-        var source: AddToDoItemViewController = seque.sourceViewController as AddToDoItemViewController
+        var source: AddToDoItemViewController = seque.sourceViewController as! AddToDoItemViewController
         var item = source.toDoItem
         if (item != nil) {
             self.toDoItems.append(item)
@@ -189,7 +189,7 @@ class ToDoListTableViewController: UITableViewController {
         var userDefaults = NSUserDefaults.standardUserDefaults()
         var data: NSData? = userDefaults.objectForKey("toDoItems") as? NSData
         if (data != nil) {
-            self.toDoItems = NSKeyedUnarchiver.unarchiveObjectWithData(data!) as [ToDoItem]
+            self.toDoItems = NSKeyedUnarchiver.unarchiveObjectWithData(data!) as! [ToDoItem]
         }
     }
 

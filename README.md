@@ -14,4 +14,4 @@ Experiment with Swift code in an interactive environment known as a playground. 
 https://github.com/mokumoku-idv/iOS_Swift_Study/blob/master/MyPlayground.playground/section-1.swift
 
 # Refs
-
+(WEAK & UNOWNED)[http://swifter.tips/retain-cycle/]

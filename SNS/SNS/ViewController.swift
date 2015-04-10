@@ -38,7 +38,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        let image = info[UIImagePickerControllerOriginalImage] as UIImage
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         self.imageView.image = image
         //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         self.dismissViewControllerAnimated(true, completion: nil)
