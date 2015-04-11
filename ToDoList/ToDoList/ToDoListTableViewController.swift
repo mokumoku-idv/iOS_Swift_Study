@@ -143,7 +143,7 @@ class ToDoListTableViewController: UITableViewController {
     }
     
     func _relativeDateString(date: NSDate) -> String {
-        var units: NSCalendarUnit = .SecondCalendarUnit | .MinuteCalendarUnit | .HourCalendarUnit | .DayCalendarUnit | .WeekOfYearCalendarUnit | .MonthCalendarUnit | .YearCalendarUnit
+        var units: NSCalendarUnit = .CalendarUnitSecond | .CalendarUnitMinute | .CalendarUnitHour | .CalendarUnitDay | .CalendarUnitWeekOfYear | .CalendarUnitMonth | .CalendarUnitYear
         var components = NSCalendar.currentCalendar().components(units, fromDate: date, toDate: NSDate(), options: nil)
         
         var result = ""
