@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="SNS/Base.lproj/LaunchScreen.xib" source-language="en" datatype="plaintext" target-language="ja">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.3" build-num="6D570"/>
+    </header>
+    <body>
+      <trans-unit id="8ie-xW-0ye.text">
+        <source>  Copyright (c) 2015 pomn. All rights reserved.</source>
+        <target>  Copyright (c) 2015 pomn. All rights reserved.</target>
+        <note>Class = "UILabel"; text = "  Copyright (c) 2015 pomn. All rights reserved."; ObjectID = "8ie-xW-0ye";</note>
+      </trans-unit>
+      <trans-unit id="kId-c2-rCX.text">
+        <source>SNS</source>
+        <target>SNS</target>
+        <note>Class = "UILabel"; text = "SNS"; ObjectID = "kId-c2-rCX";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="SNS/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="ja">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.3" build-num="6D570"/>
+    </header>
+    <body>
+      <trans-unit id="ryS-J3-VJK.title">
+        <source>album</source>
+        <target>album</target>
+        <note>Class = "UIBarButtonItem"; title = "album"; ObjectID = "ryS-J3-VJK";</note>
+      </trans-unit>
+      <trans-unit id="yIK-Ld-RjB.title">
+        <source>camera</source>
+        <target>camera</target>
+        <note>Class = "UIBarButtonItem"; title = "camera"; ObjectID = "yIK-Ld-RjB";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="SNS/Info.plist" source-language="en" datatype="plaintext" target-language="ja">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.3" build-num="6D570"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="SNSTests/Info.plist" source-language="en" datatype="plaintext" target-language="ja">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.3" build-num="6D570"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

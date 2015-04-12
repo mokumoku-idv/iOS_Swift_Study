@@ -14,6 +14,8 @@
 		4466A8951AD4D3FC00C8DEAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4466A8941AD4D3FC00C8DEAB /* Images.xcassets */; };
 		4466A8981AD4D3FC00C8DEAB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4466A8961AD4D3FC00C8DEAB /* LaunchScreen.xib */; };
 		4466A8A41AD4D3FC00C8DEAB /* SNSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466A8A31AD4D3FC00C8DEAB /* SNSTests.swift */; };
+		A428F0B91ADAAF7D00CD401F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A428F0BB1ADAAF7D00CD401F /* InfoPlist.strings */; };
+		A428F0BE1ADAAF7D00CD401F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A428F0C01ADAAF7D00CD401F /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,10 @@
 		4466A89D1AD4D3FC00C8DEAB /* SNSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SNSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4466A8A21AD4D3FC00C8DEAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4466A8A31AD4D3FC00C8DEAB /* SNSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSTests.swift; sourceTree = "<group>"; };
+		A428F0B51ADAAD8B00CD401F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		A428F0B61ADAAD8B00CD401F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A428F0BA1ADAAF7D00CD401F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A428F0BF1ADAAF7D00CD401F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,7 @@
 		4466A88B1AD4D3FC00C8DEAB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A428F0BB1ADAAF7D00CD401F /* InfoPlist.strings */,
 				4466A88C1AD4D3FC00C8DEAB /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -110,6 +117,7 @@
 		4466A8A11AD4D3FC00C8DEAB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A428F0C01ADAAF7D00CD401F /* InfoPlist.strings */,
 				4466A8A21AD4D3FC00C8DEAB /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -207,6 +215,7 @@
 				4466A8931AD4D3FC00C8DEAB /* Main.storyboard in Resources */,
 				4466A8981AD4D3FC00C8DEAB /* LaunchScreen.xib in Resources */,
 				4466A8951AD4D3FC00C8DEAB /* Images.xcassets in Resources */,
+				A428F0B91ADAAF7D00CD401F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A428F0BE1ADAAF7D00CD401F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +262,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4466A8921AD4D3FC00C8DEAB /* Base */,
+				A428F0B51ADAAD8B00CD401F /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -260,8 +271,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				4466A8971AD4D3FC00C8DEAB /* Base */,
+				A428F0B61ADAAD8B00CD401F /* ja */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		A428F0BB1ADAAF7D00CD401F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A428F0BA1ADAAF7D00CD401F /* ja */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A428F0C01ADAAF7D00CD401F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A428F0BF1ADAAF7D00CD401F /* ja */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
