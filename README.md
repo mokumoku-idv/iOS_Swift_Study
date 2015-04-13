@@ -2,8 +2,7 @@
 swift勉強
 
 # Tutorial
-[Official Site](https://developer.apple.com/swift/)
-
+[Official Site](https://developer.apple.com/swift/)  
 [The Swift Programming Language](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html)
 
 # Playground
@@ -14,4 +13,9 @@ Experiment with Swift code in an interactive environment known as a playground. 
 https://github.com/mokumoku-idv/iOS_Swift_Study/blob/master/MyPlayground.playground/section-1.swift
 
 # Refs
-(WEAK & UNOWNED)[http://swifter.tips/retain-cycle/]
+[WEAK & UNOWNED](http://swifter.tips/retain-cycle/)
+
+[Networking Overview](https://developer.apple.com/library/ios/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/WorkingWithHTTPAndHTTPSRequests/WorkingWithHTTPAndHTTPSRequests.html)  
+[NSURLSession Tutorial](http://www.raywenderlich.com/51127/nsurlsession-tutorial)  
+[Tutorial: How To Use iOS NSURLConnection By Example](http://codewithchris.com/tutorial-how-to-use-ios-nsurlconnection-by-example/)  
+[AFNetworking VS ASIHTTPRequest](http://www.infoq.com/cn/articles/afn_vs_asi)
