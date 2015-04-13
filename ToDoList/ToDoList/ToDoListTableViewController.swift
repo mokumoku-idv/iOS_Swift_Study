@@ -127,10 +127,10 @@ class ToDoListTableViewController: UITableViewController {
         var blEditing = self.tableView.editing
         if (!blEditing) {
             self.navigationItem.leftBarButtonItem?.style = UIBarButtonItemStyle.Done
-            self.navigationItem.leftBarButtonItem?.title = "Done"
+            self.navigationItem.leftBarButtonItem?.title = NSLocalizedString("Done", comment: "Done button after tap Edit")
         } else {
             self.navigationItem.leftBarButtonItem?.style = UIBarButtonItemStyle.Plain
-            self.navigationItem.leftBarButtonItem?.title = "Edit"
+            self.navigationItem.leftBarButtonItem?.title = NSLocalizedString("Edit", comment: "Edit button")
         }
         self.navigationItem.rightBarButtonItem?.enabled = blEditing
         self.tableView.setEditing(!blEditing, animated: true)
@@ -148,21 +148,21 @@ class ToDoListTableViewController: UITableViewController {
         
         var result = ""
         if (components.year > 0) {
-            result = String(components.year) + " years ago"
+            result = String(components.year) + NSLocalizedString(" years ago", comment: "")
         } else if (components.month > 0) {
-            result = String(components.month) + " months ago"
+            result = String(components.month) + NSLocalizedString(" months ago", comment: "")
         } else if (components.weekOfYear > 0) {
-            result = String(components.weekOfYear) + " weeks ago"
+            result = String(components.weekOfYear) + NSLocalizedString(" weeks ago", comment: "")
         } else if (components.day > 0) {
-            result = String(components.day) + " days ago"
+            result = String(components.day) + NSLocalizedString(" days ago", comment: "")
         } else if (components.hour > 0) {
-            result = String(components.hour) + " hours ago"
+            result = String(components.hour) + NSLocalizedString(" hours ago", comment: "")
         } else if (components.minute > 0) {
-            result = String(components.minute) + " minutes ago"
+            result = String(components.minute) + NSLocalizedString(" minutes ago", comment: "")
         } else if (components.second > 0) {
-            result = String(components.second) + " seconds ago"
+            result = String(components.second) + NSLocalizedString(" seconds ago", comment: "")
         } else {
-            result = "just now"
+            result = NSLocalizedString("just now", comment: "")
         }
         
         return result

@@ -1,0 +1,12 @@
+/* No Localized Strings */
+"Done" = "完了";
+"Edit" = "編集";
+
+" years ago" = "年前";
+" months ago" = "月前";
+" weeks ago" = "週間前";
+" days ago" = "日前";
+" hours ago" = "時間前";
+" minutes ago" = "分前";
+" seconds ago" = "秒前";
+"just now" = "今";

@@ -17,6 +17,9 @@
 		4479AC921AD25FFA00598BC8 /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4479AC911AD25FFA00598BC8 /* ToDoListTableViewController.swift */; };
 		4479AC941AD2623D00598BC8 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4479AC931AD2623D00598BC8 /* ToDoItem.swift */; };
 		4479AC961AD3D2E700598BC8 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4479AC951AD3D2E700598BC8 /* iAd.framework */; };
+		448221991ADBBFA200991C02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4482219B1ADBBFA200991C02 /* InfoPlist.strings */; };
+		4482219E1ADBBFA300991C02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 448221A01ADBBFA300991C02 /* InfoPlist.strings */; };
+		448221A31ADBBFA300991C02 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 448221A51ADBBFA300991C02 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,16 @@
 		4479AC911AD25FFA00598BC8 /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
 		4479AC931AD2623D00598BC8 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		4479AC951AD3D2E700598BC8 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		448221951ADBBD2700991C02 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		448221961ADBBD2700991C02 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		4482219A1ADBBFA200991C02 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4482219F1ADBBFA300991C02 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		448221A41ADBBFA300991C02 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		448221A61ADBC1B300991C02 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		448221A71ADBC1B300991C02 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		448221A81ADBC1B300991C02 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		448221A91ADBC1B300991C02 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		448221AA1ADBC1B300991C02 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +116,8 @@
 		4479AC6A1AD2584900598BC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				448221A51ADBBFA300991C02 /* Localizable.strings */,
+				4482219B1ADBBFA200991C02 /* InfoPlist.strings */,
 				4479AC6B1AD2584900598BC8 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -120,6 +135,7 @@
 		4479AC831AD2584900598BC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				448221A01ADBBFA300991C02 /* InfoPlist.strings */,
 				4479AC841AD2584900598BC8 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -188,6 +204,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 4479AC5E1AD2584900598BC8;
 			productRefGroup = 4479AC681AD2584900598BC8 /* Products */;
@@ -205,7 +222,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				448221A31ADBBFA300991C02 /* Localizable.strings in Resources */,
 				4479AC751AD2584900598BC8 /* Main.storyboard in Resources */,
+				448221991ADBBFA200991C02 /* InfoPlist.strings in Resources */,
 				4479AC7A1AD2584900598BC8 /* LaunchScreen.xib in Resources */,
 				4479AC771AD2584900598BC8 /* Images.xcassets in Resources */,
 			);
@@ -215,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4482219E1ADBBFA300991C02 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +276,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				4479AC741AD2584900598BC8 /* Base */,
+				448221951ADBBD2700991C02 /* ja */,
+				448221A61ADBC1B300991C02 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -264,8 +286,37 @@
 			isa = PBXVariantGroup;
 			children = (
 				4479AC791AD2584900598BC8 /* Base */,
+				448221961ADBBD2700991C02 /* ja */,
+				448221A71ADBC1B300991C02 /* zh-Hans */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		4482219B1ADBBFA200991C02 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4482219A1ADBBFA200991C02 /* ja */,
+				448221A91ADBC1B300991C02 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		448221A01ADBBFA300991C02 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4482219F1ADBBFA300991C02 /* ja */,
+				448221AA1ADBC1B300991C02 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		448221A51ADBBFA300991C02 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				448221A41ADBBFA300991C02 /* ja */,
+				448221A81ADBC1B300991C02 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -423,6 +474,7 @@
 				4479AC8B1AD2584900598BC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4479AC8C1AD2584900598BC8 /* Build configuration list for PBXNativeTarget "ToDoListTests" */ = {
 			isa = XCConfigurationList;
@@ -431,6 +483,7 @@
 				4479AC8E1AD2584900598BC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -1,0 +1,18 @@
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "8bh-AV-79d"; */
+"8bh-AV-79d.title" = "編集";
+
+/* Class = "UINavigationItem"; title = "To-Do List"; ObjectID = "bol-5v-L0I"; */
+"bol-5v-L0I.title" = "予定リスト";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "hk1-5u-jzH"; */
+"hk1-5u-jzH.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Add To-Do Item"; ObjectID = "iKj-WC-gXr"; */
+"iKj-WC-gXr.title" = "予定追加";
+
+/* Class = "UITextField"; placeholder = "New to-do item"; ObjectID = "igH-cf-9nc"; */
+"igH-cf-9nc.placeholder" = "新しい予定";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "l0F-dw-ZMz"; */
+"l0F-dw-ZMz.text" = "Subtitle";
+

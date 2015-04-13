@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="ToDoList/Base.lproj/LaunchScreen.xib" source-language="en" datatype="plaintext" target-language="ja">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.3" build-num="6D570"/>
+    </header>
+    <body>
+      <trans-unit id="8ie-xW-0ye.text">
+        <source>  Copyright (c) 2015 pomn. All rights reserved.</source>
+        <target>  Copyright (c) 2015 pomn. All rights reserved.</target>
+        <note>Class = "UILabel"; text = "  Copyright (c) 2015 pomn. All rights reserved."; ObjectID = "8ie-xW-0ye";</note>
+      </trans-unit>
+      <trans-unit id="kId-c2-rCX.text">
+        <source>ToDoList</source>
+        <target>ToDoList</target>
+        <note>Class = "UILabel"; text = "ToDoList"; ObjectID = "kId-c2-rCX";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="ToDoList/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="ja">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.3" build-num="6D570"/>
+    </header>
+    <body>
+      <trans-unit id="8bh-AV-79d.title">
+        <source>Edit</source>
+        <target>Edit</target>
+        <note>Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "8bh-AV-79d";</note>
+      </trans-unit>
+      <trans-unit id="bol-5v-L0I.title">
+        <source>To-Do List</source>
+        <target>To-Do List</target>
+        <note>Class = "UINavigationItem"; title = "To-Do List"; ObjectID = "bol-5v-L0I";</note>
+      </trans-unit>
+      <trans-unit id="hk1-5u-jzH.text">
+        <source>Title</source>
+        <target>Title</target>
+        <note>Class = "UILabel"; text = "Title"; ObjectID = "hk1-5u-jzH";</note>
+      </trans-unit>
+      <trans-unit id="iKj-WC-gXr.title">
+        <source>Add To-Do Item</source>
+        <target>Add To-Do Item</target>
+        <note>Class = "UINavigationItem"; title = "Add To-Do Item"; ObjectID = "iKj-WC-gXr";</note>
+      </trans-unit>
+      <trans-unit id="igH-cf-9nc.placeholder">
+        <source>New to-do item</source>
+        <target>New to-do item</target>
+        <note>Class = "UITextField"; placeholder = "New to-do item"; ObjectID = "igH-cf-9nc";</note>
+      </trans-unit>
+      <trans-unit id="l0F-dw-ZMz.text">
+        <source>Subtitle</source>
+        <target>Subtitle</target>
+        <note>Class = "UILabel"; text = "Subtitle"; ObjectID = "l0F-dw-ZMz";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="ToDoList/Info.plist" source-language="en" datatype="plaintext" target-language="ja">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.3" build-num="6D570"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="ToDoList/Localizable.strings" source-language="en" datatype="plaintext" target-language="ja">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.3" build-num="6D570"/>
+    </header>
+    <body>
+      <trans-unit id=" days ago">
+        <source> days ago</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id=" hours ago">
+        <source> hours ago</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id=" minutes ago">
+        <source> minutes ago</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id=" months ago">
+        <source> months ago</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id=" seconds ago">
+        <source> seconds ago</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id=" weeks ago">
+        <source> weeks ago</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id=" years ago">
+        <source> years ago</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Done">
+        <source>Done</source>
+        <note>Done button after tap Edit</note>
+      </trans-unit>
+      <trans-unit id="Edit">
+        <source>Edit</source>
+        <note>Edit button</note>
+      </trans-unit>
+      <trans-unit id="just now">
+        <source>just now</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="ToDoListTests/Info.plist" source-language="en" datatype="plaintext" target-language="ja">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.3" build-num="6D570"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
