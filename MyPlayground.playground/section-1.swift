@@ -179,7 +179,7 @@ protocol KyotoProtocol {
 }
 
 class Japan: KyotoProtocol2 {
-    func stopGlobalWarming() {
+    @objc func stopGlobalWarming() {
         println("use green energy")
         println("plant forest")
     }
