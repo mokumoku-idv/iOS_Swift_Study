@@ -16,6 +16,8 @@ https://github.com/mokumoku-idv/iOS_Swift_Study/blob/master/MyPlayground.playgro
 [WEAK & UNOWNED](http://swifter.tips/retain-cycle/)
 
 [Networking Overview](https://developer.apple.com/library/ios/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/WorkingWithHTTPAndHTTPSRequests/WorkingWithHTTPAndHTTPSRequests.html)  
+[URL Loading System Programming Guide](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/URLLoadingSystem/Articles/UsingNSURLSession.html#//apple_ref/doc/uid/TP40013509-SW1)  
 [NSURLSession Tutorial](http://www.raywenderlich.com/51127/nsurlsession-tutorial)  
+[NSOperation and NSOperationQueue Tutorial in Swift](http://www.raywenderlich.com/76341/use-nsoperation-nsoperationqueue-swift)  
 [Tutorial: How To Use iOS NSURLConnection By Example](http://codewithchris.com/tutorial-how-to-use-ios-nsurlconnection-by-example/)  
 [AFNetworking VS ASIHTTPRequest](http://www.infoq.com/cn/articles/afn_vs_asi)
