@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol ReceiveDataHandler {
+protocol CompletionHandlerForSession {
     //var data: NSDictionary {get set}
-    func handleData()
+    func handleReceivedData()
 }
 
 
@@ -30,7 +30,7 @@ class MySessionDelegate: NSObject,NSURLSessionDelegate, NSURLSessionTaskDelegate
     var receivedData: NSMutableData?
     var jsonData: NSDictionary?
     
-    var delegate: ReceiveDataHandler!
+    var delegate: CompletionHandlerForSession!
     
     func addCompleteionHandler(handler: Void, forSession identifier: String) {
     }
@@ -68,7 +68,7 @@ class MySessionDelegate: NSObject,NSURLSessionDelegate, NSURLSessionTaskDelegate
         self.ephemeralSession = NSURLSession(configuration: ephemeralConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
     }
     
-    convenience init(url: String, delegate: ReceiveDataHandler) {
+    convenience init(url: String, delegate: CompletionHandlerForSession) {
         self.init()
         self.strUrl = url
         self.delegate = delegate
@@ -78,14 +78,16 @@ class MySessionDelegate: NSObject,NSURLSessionDelegate, NSURLSessionTaskDelegate
         self.strUrl = url
     }
     
-    func setDelegate(delegate: ReceiveDataHandler) {
+    func setDelegate(delegate: CompletionHandlerForSession) {
         self.delegate = delegate
     }
     
     func startHttpGetDataTask() {
         //var url = NSURL(string: self.strUrl!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
         println(self.strUrl!)
-        var url = NSURL(string: self.strUrl!)
+        var encodeStrUrl = self.strUrl!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        println(encodeStrUrl)
+        var url = NSURL(string: encodeStrUrl!)
         var task: NSURLSessionDataTask = self.defaultSession.dataTaskWithURL(url!)
         task.resume()
     }
@@ -152,7 +154,7 @@ class MySessionDelegate: NSObject,NSURLSessionDelegate, NSURLSessionTaskDelegate
         self.jsonData = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: &err) as? NSDictionary
         println(self.jsonData)
         
-        self.delegate.handleData()
+        self.delegate.handleReceivedData()
     }
     
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, willCacheResponse proposedResponse: NSCachedURLResponse, completionHandler: (NSCachedURLResponse!) -> Void) {

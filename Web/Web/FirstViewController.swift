@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ReceiveDataHandler {
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CompletionHandlerForSession {
     
     var data: NSDictionary?
     var mySession: MySessionDelegate!
@@ -36,8 +36,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.data = NSDictionary()
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+//        self.tableView.delegate = self
+//        self.tableView.dataSource = self
         
         
         var strUrl = "http://search.olp.yahooapis.jp/OpenLocalPlatform/V1/localSearch?appid=dj0zaiZpPURWeFVCUkhHNFBKWCZkPVlXazlhMmRWY0hWcE5tOG1jR285TUEtLSZzPWNvbnN1bWVyc2VjcmV0Jng9NWM-&query=%E3%83%9F%E3%83%83%E3%83%89%E3%82%BF%E3%82%A6%E3%83%B3&results=10&output=json"
@@ -59,7 +59,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     /* ReceiveDataHandler */
-    func handleData() {
+    func handleReceivedData() {
         println("FirstViewController::handleData start")
         self.data = mySession.jsonData
         self.tableView.reloadData()
