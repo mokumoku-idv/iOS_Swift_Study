@@ -110,6 +110,7 @@ class MySessionDelegate: NSObject,NSURLSessionDelegate, NSURLSessionTaskDelegate
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
         if error != nil {
             println(error)
+            println(error!.localizedDescription)
         }
     }
     

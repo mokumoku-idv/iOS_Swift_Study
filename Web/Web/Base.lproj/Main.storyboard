@@ -25,7 +25,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ylr-na-XwK">
-                                <rect key="frame" x="0.0" y="150" width="600" height="401"/>
+                                <rect key="frame" x="0.0" y="234" width="600" height="317"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListPrototypeCell" textLabel="nBw-K6-DhS" style="IBUITableViewCellStyleDefault" id="BY7-fp-kX4">
@@ -44,45 +44,67 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="5vG-1c-Zil"/>
-                                    <outlet property="delegate" destination="9pv-A4-QxB" id="YNm-6z-AKz"/>
-                                </connections>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ミッドタウン" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oU6-LR-vdD">
                                 <rect key="frame" x="16" y="78" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdb-sX-OQf">
                                 <rect key="frame" x="265" y="116" width="70" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="96j-gL-hWj"/>
-                                    <constraint firstAttribute="width" constant="70" id="udM-bH-bUH"/>
+                                    <constraint firstAttribute="width" constant="70" id="PBv-7y-IoD"/>
                                 </constraints>
                                 <state key="normal" title="Search"/>
                                 <connections>
                                     <action selector="searchButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="4He-ub-2l8"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ZP-bq-neG">
+                                <rect key="frame" x="16" y="116" width="48" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="Btf-wV-0PK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="resultsTextAction:" destination="9pv-A4-QxB" eventType="editingChanged" id="Yf3-Zl-XSt"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="件" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obr-7b-BS8">
+                                <rect key="frame" x="72" y="120" width="26" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="26" id="6JP-4N-qFZ"/>
+                                    <constraint firstAttribute="height" constant="21" id="pBv-Hq-1sS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oU6-LR-vdD" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="16" id="BRC-Ch-mkZ"/>
-                            <constraint firstItem="oU6-LR-vdD" firstAttribute="centerX" secondItem="sdb-sX-OQf" secondAttribute="centerX" id="HEs-HR-S3t"/>
-                            <constraint firstItem="oU6-LR-vdD" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="LNL-pN-HFa"/>
-                            <constraint firstItem="oU6-LR-vdD" firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="PdJ-QW-HEg"/>
-                            <constraint firstItem="Ylr-na-XwK" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="QKE-sO-FNr"/>
-                            <constraint firstItem="sdb-sX-OQf" firstAttribute="centerX" secondItem="Ylr-na-XwK" secondAttribute="centerX" id="Ra8-NI-jvw"/>
-                            <constraint firstItem="Ylr-na-XwK" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="de0-2N-L9C"/>
-                            <constraint firstAttribute="trailing" secondItem="Ylr-na-XwK" secondAttribute="trailing" id="iLH-rT-0Ox"/>
-                            <constraint firstItem="KQZ-1w-vlD" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="iMm-ad-TbQ"/>
-                            <constraint firstItem="Ylr-na-XwK" firstAttribute="top" secondItem="sdb-sX-OQf" secondAttribute="bottom" constant="12" id="q6g-Ed-yx6"/>
-                            <constraint firstItem="sdb-sX-OQf" firstAttribute="top" secondItem="oU6-LR-vdD" secondAttribute="bottom" constant="8" symbolic="YES" id="tWa-d8-t64"/>
+                            <constraint firstItem="sdb-sX-OQf" firstAttribute="top" secondItem="7ZP-bq-neG" secondAttribute="top" id="1Jp-m5-eZ2"/>
+                            <constraint firstItem="KQZ-1w-vlD" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="6mG-SL-s8k"/>
+                            <constraint firstItem="oU6-LR-vdD" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="16" id="D2Z-6U-mGa"/>
+                            <constraint firstItem="Ylr-na-XwK" firstAttribute="top" secondItem="sdb-sX-OQf" secondAttribute="bottom" constant="96" id="EIR-pu-RXH"/>
+                            <constraint firstItem="7ZP-bq-neG" firstAttribute="leading" secondItem="oU6-LR-vdD" secondAttribute="leading" id="KC3-FG-1JK"/>
+                            <constraint firstItem="Obr-7b-BS8" firstAttribute="top" secondItem="oU6-LR-vdD" secondAttribute="bottom" constant="12" id="LI0-RS-agc"/>
+                            <constraint firstItem="7ZP-bq-neG" firstAttribute="top" secondItem="oU6-LR-vdD" secondAttribute="bottom" constant="8" symbolic="YES" id="NA6-Q4-4w0"/>
+                            <constraint firstItem="KQZ-1w-vlD" firstAttribute="centerX" secondItem="oU6-LR-vdD" secondAttribute="centerX" id="bwP-zV-mxP"/>
+                            <constraint firstAttribute="trailing" secondItem="Ylr-na-XwK" secondAttribute="trailing" id="dce-CX-yU1"/>
+                            <constraint firstItem="Ylr-na-XwK" firstAttribute="top" secondItem="Obr-7b-BS8" secondAttribute="bottom" constant="93" id="fKu-Av-w9U"/>
+                            <constraint firstItem="oU6-LR-vdD" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="lUz-Cp-oy1"/>
+                            <constraint firstItem="Ylr-na-XwK" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="rJa-1M-NQS"/>
+                            <constraint firstItem="sdb-sX-OQf" firstAttribute="centerX" secondItem="oU6-LR-vdD" secondAttribute="centerX" id="uoz-qc-uv7"/>
+                            <constraint firstItem="Obr-7b-BS8" firstAttribute="leading" secondItem="7ZP-bq-neG" secondAttribute="trailing" constant="8" symbolic="YES" id="veT-1V-A3v"/>
+                            <constraint firstItem="Ylr-na-XwK" firstAttribute="centerX" secondItem="sdb-sX-OQf" secondAttribute="centerX" id="wGD-cT-U3N"/>
+                            <constraint firstItem="Ylr-na-XwK" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="wce-fW-Tqz"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="resultsTextField" destination="7ZP-bq-neG" id="GPL-vI-zRV"/>
                         <outlet property="searchTextField" destination="oU6-LR-vdD" id="wYl-zV-Udn"/>
                         <outlet property="tableView" destination="Ylr-na-XwK" id="vBx-48-Bad"/>
                     </connections>

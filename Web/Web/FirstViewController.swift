@@ -8,27 +8,36 @@
 
 import UIKit
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CompletionHandlerForSession {
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, CompletionHandlerForSession {
     
     var data: NSDictionary?
     var mySession: MySessionDelegate!
-    var basicUrl = "http://search.olp.yahooapis.jp/OpenLocalPlatform/V1/localSearch?appid=dj0zaiZpPURWeFVCUkhHNFBKWCZkPVlXazlhMmRWY0hWcE5tOG1jR285TUEtLSZzPWNvbnN1bWVyc2VjcmV0Jng9NWM-&sresults=10&output=json"
+    var basicUrl = "http://search.olp.yahooapis.jp/OpenLocalPlatform/V1/localSearch?appid=dj0zaiZpPURWeFVCUkhHNFBKWCZkPVlXazlhMmRWY0hWcE5tOG1jR285TUEtLSZzPWNvbnN1bWVyc2VjcmV0Jng9NWM-&output=json"
+    
+    var pickerArray: [Int] = []
+    var pickerView: UIPickerView!
 
     @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var resultsTextField: UITextField!
     
     @IBAction func searchButton(sender: UIButton) {
-        let keyword = self.searchTextField.text
+        var searchUrl = self.basicUrl
         if (count(self.searchTextField.text) > 0) {
-            var searchUrl = self.basicUrl + "&query=" + self.searchTextField.text
-            println(searchUrl)
-            //searchUrl = NSString(data: searchUrl, encoding: NSUTF8StringEncoding)
-            println(searchUrl)
-            self.mySession.setUrl(searchUrl)
-            self.getData()
+            searchUrl += "&query=" + self.searchTextField.text
         }
-
+        if (count(self.resultsTextField.text) > 0) {
+            searchUrl += "&results=" + self.resultsTextField.text
+        }
+        self.mySession.setUrl(searchUrl)
+        self.getData()
     }
+    
+    @IBAction func resultsTextAction(sender: UITextField) {
+        self.pickerViewSelectRow()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +45,19 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.data = NSDictionary()
         
-//        self.tableView.delegate = self
-//        self.tableView.dataSource = self
+        self.initPickerView()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        self.searchTextField.delegate = self
         
         
         var strUrl = "http://search.olp.yahooapis.jp/OpenLocalPlatform/V1/localSearch?appid=dj0zaiZpPURWeFVCUkhHNFBKWCZkPVlXazlhMmRWY0hWcE5tOG1jR285TUEtLSZzPWNvbnN1bWVyc2VjcmV0Jng9NWM-&query=%E3%83%9F%E3%83%83%E3%83%89%E3%82%BF%E3%82%A6%E3%83%B3&results=10&output=json"
-        self.mySession = MySessionDelegate(url: strUrl, delegate: self)
-        
+        //self.mySession = MySessionDelegate(url: strUrl, delegate: self)
         //mySession.startHttpGetDataTask()
-        
-        //self._get()
-        
+        self.mySession = MySessionDelegate()
+        self.mySession.setDelegate(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +69,56 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         mySession.startHttpGetDataTask()
     }
     
+    
+    /* pickerView */
+    func initPickerView() {
+        for n in 1...100 {
+            pickerArray.append(n)
+        }
+
+        self.pickerView = UIPickerView()
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
+        self.pickerViewSelectRow()
+        
+        var toolBar = UIToolbar()
+        //toolBar.barStyle = UIBarStyle.Default
+        //toolBar.translucent = true
+        //toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        var cancelBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: Selector("doPickerViewCancel"))
+        var spaceBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        var doneBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "doPickerViewDone")
+        
+        toolBar.setItems([cancelBarButton, spaceBarButton, doneBarButton], animated: false)
+        toolBar.userInteractionEnabled = true
+        
+        self.resultsTextField.inputView = self.pickerView
+        self.resultsTextField.inputAccessoryView = toolBar
+    }
+    
+    func pickerViewSelectRow() {
+        if let selected = self.resultsTextField.text {
+            if (count(selected) > 0) {
+                if let intRow = selected.toInt() {
+                    self.pickerView.selectRow(intRow - 1, inComponent: 0, animated: true)
+                }
+            }
+        }
+    }
+    
+    func doPickerViewCancel() {
+        self.resultsTextField.resignFirstResponder()
+    }
+    func doPickerViewDone() {
+        //self.resultsTextField.text = String(self.pickerArray[row])
+        let selected = self.pickerView(self.pickerView, titleForRow: self.pickerView.selectedRowInComponent(0), forComponent: 0)
+        self.resultsTextField.text = selected
+        self.resultsTextField.resignFirstResponder()
+    }
+
+    
     /* ReceiveDataHandler */
     func handleReceivedData() {
         println("FirstViewController::handleData start")
@@ -67,8 +128,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         println("FirstViewController::handleData end")
     }
     
-    /* UITableViewDelegate */
     
+    /* UITableViewDelegate */
     
     /* UITableViewDataSource */
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -85,15 +146,14 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 n = features.count
             }
         }
-        println("numberOfRowsInSection \(n)")
+        //println("numberOfRowsInSection \(n)")
         
         return n
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell", forIndexPath: indexPath) as! UITableViewCell
-//        println("cellForRowAtIndexPath")
-//        println(indexPath.row)
+        //println("cellForRowAtIndexPath \(indexPath.row)")
         if let features = self.data!["Feature"] as? [[String: AnyObject]] {
             let feature = features[indexPath.row]
             let name = feature["Name"] as! String
@@ -104,76 +164,31 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     
+    /* UIPickerViewDelegate */
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return String(self.pickerArray[row])
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //self.resultsTextField.text = String(self.pickerArray[row])
+        //self.resultsTextField.resignFirstResponder()
+        //pickerView.hidden = true
+    }
     
     
-    /////////////////////////////////////////////
+    /* UIPickerViewDataSource */
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
-    func _get(){
-        
-        
-        var url = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=London,uk")
-        url = NSURL(string: "http://search.olp.yahooapis.jp/OpenLocalPlatform/V1/localSearch?appid=dj0zaiZpPURWeFVCUkhHNFBKWCZkPVlXazlhMmRWY0hWcE5tOG1jR285TUEtLSZzPWNvbnN1bWVyc2VjcmV0Jng9NWM-&query=%E3%83%9F%E3%83%83%E3%83%89%E3%82%BF%E3%82%A6%E3%83%B3&results=10&output=json")
-        var request = NSURLRequest(URL: url!)
-        //var session = NSURLSession.sharedSession()
-        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            
-            //println("Response: \(response)\n")
-            let httpResponse = response as! NSHTTPURLResponse
-            //println(httpResponse.statusCode)
-            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            //println("Body: \(strData)")
-            var err: NSError?
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: &err) as? NSDictionary
-            //println(json)
-            self.data = json
-            //println(self.data)
-            self.tableView.reloadData()
-            
-            if let dict = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: &err) as? NSDictionary {
-                var features = dict["Feature"] as! [[String: AnyObject]]
-                var names: String = ""
-                //println(features)
-                for feature in features {
-                    let name = feature["Name"] as! String
-                    //println(name)
-                    names += name + "\n"
-                }
-                println(names)
-                //self.firstTextLabel.text = names
-                //self.firstTextView.text = names
-
-            }
-            
-            //println(NSString(data: data, encoding: NSUTF8StringEncoding))
-            
-            //let a = json["Optional"] as!
-            
-            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
-//            if(err != nil) {
-//                println(err!.localizedDescription)
-//                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-//                println("Error could not parse JSON: '\(jsonStr)'")
-//            }
-//            else {
-//                // The JSONObjectWithData constructor didn't return an error. But, we should still
-//                // check and make sure that json has a value using optional binding.
-//                //self.firstTextLabel.text = json
-//                if let parseJSON = json {
-//                    // Okay, the parsedJSON is here, let's get the value for 'success' out of it
-//                    var success = parseJSON["success"] as? Int
-//                    println("Succes: \(success)")
-//                }
-//                else {
-//                    // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
-//                    let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-//                    println("Error could not parse JSON: \(jsonStr)")
-//                }
-//            }
-        })
-        
-        task.resume()
-
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.pickerArray.count
+    }
+    
+    /* UITextFieldDelegate */
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
     }
 
 }
