@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import MapKit
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, CompletionHandlerForSession {
     
     var data: NSDictionary?
+    var shops: [Shop] = []
     var mySession: MySessionDelegate!
     var basicUrl = "http://search.olp.yahooapis.jp/OpenLocalPlatform/V1/localSearch?appid=dj0zaiZpPURWeFVCUkhHNFBKWCZkPVlXazlhMmRWY0hWcE5tOG1jR285TUEtLSZzPWNvbnN1bWVyc2VjcmV0Jng9NWM-&output=json"
     
@@ -38,6 +40,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.pickerViewSelectRow()
     }
     
+    @IBAction func unwindToList(seque: UIStoryboardSegue) {
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +68,18 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        println(segue.identifier)
+        let desView = segue.destinationViewController as! MapViewController
+        if let indexPath = self.tableView.indexPathForSelectedRow() {
+            let shop = self.shops[indexPath.row]
+            desView.shop = shop
+        }
     }
     
     func getData() {
@@ -123,6 +140,29 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func handleReceivedData() {
         println("FirstViewController::handleData start")
         self.data = mySession.jsonData
+        
+        if self.data != nil {
+            if let features = self.data!["Feature"] as? [[String: AnyObject]] {
+                for feature in features {
+                    var name = feature["Name"] as! String
+                    var category = ""
+                    if let categorys = feature["Category"] as? [String] {
+                        category = categorys[0]
+                    }
+                    var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
+                    if let geometry: AnyObject = feature["Geometry"]{
+                        let coordinates = geometry["Coordinates"] as! String
+                        let aryCoordinates = coordinates.componentsSeparatedByString(",")
+                        let lon = (aryCoordinates[0] as NSString).doubleValue
+                        let lat = (aryCoordinates[1] as NSString).doubleValue
+                        coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                    }
+                    var shop = Shop(title: name, subtitle: category, discipline: "", coordinate: coordinate)
+                    self.shops.append(shop)
+                }
+            }
+        }
+        
         self.tableView.reloadData()
         //println(self.data)
         println("FirstViewController::handleData end")
@@ -140,13 +180,14 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var n = 0
-        if self.data != nil {
-            if let features = self.data!["Feature"] as? NSArray {
-                n = features.count
-            }
-        }
+//        var n = 0
+//        if self.data != nil {
+//            if let features = self.data!["Feature"] as? NSArray {
+//                n = features.count
+//            }
+//        }
         //println("numberOfRowsInSection \(n)")
+        var n = self.shops.count
         
         return n
     }
@@ -154,11 +195,13 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell", forIndexPath: indexPath) as! UITableViewCell
         //println("cellForRowAtIndexPath \(indexPath.row)")
-        if let features = self.data!["Feature"] as? [[String: AnyObject]] {
-            let feature = features[indexPath.row]
-            let name = feature["Name"] as! String
-            cell.textLabel?.text = name
-        }
+//        if let features = self.data!["Feature"] as? [[String: AnyObject]] {
+//            let feature = features[indexPath.row]
+//            let name = feature["Name"] as! String
+//            cell.textLabel?.text = name
+//        }
+        let shop = self.shops[indexPath.row]
+        cell.textLabel?.text = shop.title
 
         return cell
     }
