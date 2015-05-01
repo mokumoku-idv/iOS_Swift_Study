@@ -153,7 +153,7 @@ class MySessionDelegate: NSObject,NSURLSessionDelegate, NSURLSessionTaskDelegate
         
         var err: NSError?
         self.jsonData = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: &err) as? NSDictionary
-        println(self.jsonData)
+        //println(self.jsonData)
         
         self.delegate.handleReceivedData()
     }

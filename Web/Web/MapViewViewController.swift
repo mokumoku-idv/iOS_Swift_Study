@@ -11,7 +11,8 @@ import MapKit
 
 class MapViewController: UIViewController {
     
-    var shop: Shop?
+    var shops: [Shop]?
+    var center: CLLocationCoordinate2D?
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -19,9 +20,17 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if (self.shop != nil && shop?.coordinate != nil) {
-            self.centerMapOnLocation(self.shop!.coordinate)
-            self.mapView.addAnnotation(self.shop)
+        
+        self.mapView.mapType = MKMapType.Hybrid
+        
+        if (self.center != nil) {
+            self.centerMapOnLocation(self.center!, regionRadius: 500)
+        }
+        
+        if (self.shops != nil) {
+            for shop in self.shops! {
+                self.mapView.addAnnotation(shop)
+            }
         }
     }
 
@@ -43,8 +52,7 @@ class MapViewController: UIViewController {
     
     
     
-    func centerMapOnLocation(location: CLLocationCoordinate2D) {
-        let regionRadius: CLLocationDistance = 500
+    func centerMapOnLocation(location: CLLocationCoordinate2D, regionRadius: CLLocationDistance) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }

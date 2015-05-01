@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, CompletionHandlerForSession {
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate, CompletionHandlerForSession {
     
     var data: NSDictionary?
     var shops: [Shop] = []
@@ -18,11 +18,15 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var pickerArray: [Int] = []
     var pickerView: UIPickerView!
-
+    
+    var locationManager: CLLocationManager!
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var resultsTextField: UITextField!
+    
+    @IBOutlet weak var mapView: MKMapView!
     
     @IBAction func searchButton(sender: UIButton) {
         var searchUrl = self.basicUrl
@@ -57,6 +61,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.searchTextField.delegate = self
         
+        self.initMap()
+        
         
         var strUrl = "http://search.olp.yahooapis.jp/OpenLocalPlatform/V1/localSearch?appid=dj0zaiZpPURWeFVCUkhHNFBKWCZkPVlXazlhMmRWY0hWcE5tOG1jR285TUEtLSZzPWNvbnN1bWVyc2VjcmV0Jng9NWM-&query=%E3%83%9F%E3%83%83%E3%83%89%E3%82%BF%E3%82%A6%E3%83%B3&results=10&output=json"
         //self.mySession = MySessionDelegate(url: strUrl, delegate: self)
@@ -78,13 +84,110 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let desView = segue.destinationViewController as! MapViewController
         if let indexPath = self.tableView.indexPathForSelectedRow() {
             let shop = self.shops[indexPath.row]
-            desView.shop = shop
+            if desView.shops == nil {
+                desView.shops = []
+            }
+            desView.shops?.append(shop)
+            desView.center = shop.coordinate
         }
     }
     
     func getData() {
         mySession.startHttpGetDataTask()
     }
+    
+    /* ReceiveDataHandler */
+    func handleReceivedData() {
+        println("FirstViewController::handleData start")
+        self.data = mySession.jsonData
+        self.shops = []
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        
+        if self.data != nil {
+            if let features = self.data!["Feature"] as? [[String: AnyObject]] {
+                for feature in features {
+                    var name = feature["Name"] as! String
+                    var category = ""
+                    if let categorys = feature["Category"] as? [String] {
+                        category = categorys[0]
+                    }
+                    var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
+                    if let geometry: AnyObject = feature["Geometry"]{
+                        let coordinates = geometry["Coordinates"] as! String
+                        let aryCoordinates = coordinates.componentsSeparatedByString(",")
+                        let lon = (aryCoordinates[0] as NSString).doubleValue
+                        let lat = (aryCoordinates[1] as NSString).doubleValue
+                        coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                    }
+                    var shop = Shop(title: name, subtitle: category, discipline: "", coordinate: coordinate)
+                    self.shops.append(shop)
+                }
+            }
+        }
+        
+        self.tableView.reloadData()
+        self.addAnnotation()
+        
+        //println(self.data)
+        println("FirstViewController::handleData end")
+    }
+    
+    /* MapView */
+    func initMap() {
+        self.locationManager = CLLocationManager()
+
+        //self.locationManager.requestAlwaysAuthorization()
+        //self.locationManager.requestWhenInUseAuthorization()
+        self.checkLocationAuthorizationStatus()
+
+        
+        if CLLocationManager.locationServicesEnabled() {
+            println("locationServicesEnabled")
+            self.locationManager.delegate = self
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+
+            //self.mapView.showsUserLocation = true
+            self.locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func checkLocationAuthorizationStatus() {
+        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+            mapView.showsUserLocation = true
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func addAnnotation(){
+        if self.shops.count > 0 {
+            centerMapOnLocation(self.shops[0].coordinate, regionRadius: 1000)
+        }
+        
+        for shop in self.shops {
+            self.mapView.addAnnotation(shop)
+        }
+    }
+    
+    func centerMapOnLocation(location: CLLocationCoordinate2D, regionRadius: CLLocationDistance) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    /* CLLocationManagerDelegate */
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        var loc: CLLocationCoordinate2D = manager.location.coordinate
+        println(loc.latitude)
+        println(loc.longitude)
+        self.centerMapOnLocation(loc, regionRadius: 1000)
+        
+        manager.stopUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        println("Error while updating location " + error.localizedDescription)
+    }
+
     
     
     /* pickerView */
@@ -134,40 +237,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.resultsTextField.text = selected
         self.resultsTextField.resignFirstResponder()
     }
-
-    
-    /* ReceiveDataHandler */
-    func handleReceivedData() {
-        println("FirstViewController::handleData start")
-        self.data = mySession.jsonData
-        
-        if self.data != nil {
-            if let features = self.data!["Feature"] as? [[String: AnyObject]] {
-                for feature in features {
-                    var name = feature["Name"] as! String
-                    var category = ""
-                    if let categorys = feature["Category"] as? [String] {
-                        category = categorys[0]
-                    }
-                    var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
-                    if let geometry: AnyObject = feature["Geometry"]{
-                        let coordinates = geometry["Coordinates"] as! String
-                        let aryCoordinates = coordinates.componentsSeparatedByString(",")
-                        let lon = (aryCoordinates[0] as NSString).doubleValue
-                        let lat = (aryCoordinates[1] as NSString).doubleValue
-                        coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                    }
-                    var shop = Shop(title: name, subtitle: category, discipline: "", coordinate: coordinate)
-                    self.shops.append(shop)
-                }
-            }
-        }
-        
-        self.tableView.reloadData()
-        //println(self.data)
-        println("FirstViewController::handleData end")
-    }
-    
     
     /* UITableViewDelegate */
     
