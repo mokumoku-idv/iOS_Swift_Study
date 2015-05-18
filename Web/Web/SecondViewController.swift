@@ -12,6 +12,21 @@ import MapKit
 class SecondViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var gmsMapView: GMSMapView!
+    
+    @IBAction func mapTypeSegmentPressed(sender: UISegmentedControl) {
+        let segmentedControl = sender as UISegmentedControl
+        switch segmentedControl.selectedSegmentIndex {
+            case 0:
+                gmsMapView.mapType = kGMSTypeNormal
+            case 1:
+                gmsMapView.mapType = kGMSTypeSatellite
+            case 2:
+                gmsMapView.mapType = kGMSTypeHybrid
+            default:
+                gmsMapView.mapType = gmsMapView.mapType
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +56,19 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
             discipline: "Sculpture",
             coordinate: CLLocationCoordinate2D(latitude: 35.666565840656, longitude: 139.73106709534))
         mapView.addAnnotation(shop3)
+        
+        
+        
+        // google map
+        var camera = GMSCameraPosition.cameraWithLatitude(-33.86, longitude: 151.20, zoom: 6)
+        self.gmsMapView.myLocationEnabled = true
+        self.gmsMapView.camera = camera
+        
+        var marker = GMSMarker()
+        marker.position = CLLocationCoordinate2DMake(-33.86, 151.20)
+        marker.title = "Sydney"
+        marker.snippet = "Australia"
+        marker.map = self.gmsMapView
 
     }
 
