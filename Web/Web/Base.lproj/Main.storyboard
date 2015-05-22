@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -132,9 +132,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Q6Q-Oz-w1I">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                            </mapView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRP-q7-KfA">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
@@ -147,20 +144,40 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26t-im-OKS" customClass="GMSMapView">
+                                <rect key="frame" x="16" y="100" width="568" height="480"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Nsf-qI-hVy">
+                                <rect key="frame" x="16" y="64" width="568" height="29"/>
+                                <segments>
+                                    <segment title="Normal"/>
+                                    <segment title="Satellite"/>
+                                    <segment title="Hybrid"/>
+                                    <segment title="Terrain"/>
+                                    <segment title="None"/>
+                                </segments>
+                                <connections>
+                                    <action selector="mapTypeSegmentPressed:" destination="wr6-ER-qhD" eventType="valueChanged" id="D0o-p8-Nyt"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IRP-q7-KfA" firstAttribute="top" secondItem="CJg-H5-pzZ" secondAttribute="bottom" id="4AU-ts-NAn"/>
-                            <constraint firstItem="Q6Q-Oz-w1I" firstAttribute="bottom" secondItem="2Ea-Lf-Zqb" secondAttribute="top" id="8GU-vq-AXX"/>
-                            <constraint firstItem="Q6Q-Oz-w1I" firstAttribute="top" secondItem="IRP-q7-KfA" secondAttribute="bottom" id="8l3-U3-6jy"/>
-                            <constraint firstItem="Q6Q-Oz-w1I" firstAttribute="leading" secondItem="8dy-8P-ohM" secondAttribute="leading" id="Hhh-HA-RuB"/>
-                            <constraint firstItem="Q6Q-Oz-w1I" firstAttribute="trailing" secondItem="IRP-q7-KfA" secondAttribute="trailing" id="MEg-6t-lcX"/>
-                            <constraint firstItem="IRP-q7-KfA" firstAttribute="leading" secondItem="Q6Q-Oz-w1I" secondAttribute="leading" id="ka3-2Z-iOo"/>
-                            <constraint firstAttribute="trailing" secondItem="IRP-q7-KfA" secondAttribute="trailing" id="n31-nE-ehh"/>
+                            <constraint firstAttribute="trailing" secondItem="IRP-q7-KfA" secondAttribute="trailing" id="9Uo-z4-eWC"/>
+                            <constraint firstItem="26t-im-OKS" firstAttribute="top" secondItem="Nsf-qI-hVy" secondAttribute="bottom" constant="8" symbolic="YES" id="CWc-Hw-Sey"/>
+                            <constraint firstItem="IRP-q7-KfA" firstAttribute="leading" secondItem="8dy-8P-ohM" secondAttribute="leading" id="GeN-Bt-3Nu"/>
+                            <constraint firstItem="Nsf-qI-hVy" firstAttribute="leading" secondItem="26t-im-OKS" secondAttribute="leading" id="GhQ-i1-2gz"/>
+                            <constraint firstItem="IRP-q7-KfA" firstAttribute="top" secondItem="CJg-H5-pzZ" secondAttribute="bottom" id="Tug-ll-3Vn"/>
+                            <constraint firstItem="Nsf-qI-hVy" firstAttribute="trailing" secondItem="26t-im-OKS" secondAttribute="trailing" id="V7U-F0-WZ8"/>
+                            <constraint firstAttribute="bottom" secondItem="26t-im-OKS" secondAttribute="bottom" constant="20" symbolic="YES" id="YmD-hi-O4X"/>
+                            <constraint firstItem="Nsf-qI-hVy" firstAttribute="top" secondItem="IRP-q7-KfA" secondAttribute="bottom" id="aAl-o7-DQE"/>
+                            <constraint firstItem="Nsf-qI-hVy" firstAttribute="leading" secondItem="8dy-8P-ohM" secondAttribute="leadingMargin" id="im2-eE-UN1"/>
+                            <constraint firstItem="IRP-q7-KfA" firstAttribute="centerX" secondItem="Nsf-qI-hVy" secondAttribute="centerX" id="q22-hn-g6l"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mapView" destination="Q6Q-Oz-w1I" id="gDd-Li-3xR"/>
+                        <outlet property="mapView" destination="26t-im-OKS" id="5B3-4M-MPP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fz2-F9-Gfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -180,25 +197,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Jqf-jU-XLZ">
-                                <rect key="frame" x="16" y="28" width="568" height="221"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="221" id="dwc-jv-uDJ"/>
-                                </constraints>
-                            </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k36-pr-IYd" customClass="GMSMapView">
-                                <rect key="frame" x="16" y="293" width="568" height="250"/>
+                                <rect key="frame" x="16" y="56" width="568" height="487"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YyJ-fu-bLm">
-                                <rect key="frame" x="202" y="257" width="196" height="29"/>
+                                <rect key="frame" x="138" y="20" width="324" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="196" id="C3N-EH-jeq"/>
+                                    <constraint firstAttribute="width" constant="324" id="aUo-8d-km3"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Normal"/>
                                     <segment title="Satellite"/>
                                     <segment title="Hybrid"/>
+                                    <segment title="Terrain"/>
+                                    <segment title="None"/>
                                 </segments>
                                 <connections>
                                     <action selector="mapTypeSegmentPressed:" destination="8rJ-Kc-sve" eventType="valueChanged" id="MdM-1W-iff"/>
@@ -207,21 +220,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="k36-pr-IYd" firstAttribute="leading" secondItem="Jqf-jU-XLZ" secondAttribute="leading" id="2Vt-yq-8tr"/>
-                            <constraint firstItem="Jqf-jU-XLZ" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" symbolic="YES" id="5p9-F4-bD7"/>
-                            <constraint firstItem="k36-pr-IYd" firstAttribute="trailing" secondItem="Jqf-jU-XLZ" secondAttribute="trailing" id="6Wu-tx-DOW"/>
-                            <constraint firstItem="k36-pr-IYd" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="9cx-e4-xMq"/>
-                            <constraint firstItem="k36-pr-IYd" firstAttribute="top" secondItem="YyJ-fu-bLm" secondAttribute="bottom" constant="8" symbolic="YES" id="A3f-7n-dx8"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="k36-pr-IYd" secondAttribute="bottom" constant="8" symbolic="YES" id="Qwx-9g-rcW"/>
-                            <constraint firstItem="Jqf-jU-XLZ" firstAttribute="centerX" secondItem="YyJ-fu-bLm" secondAttribute="centerX" id="ZrJ-Vv-oSW"/>
-                            <constraint firstItem="YyJ-fu-bLm" firstAttribute="top" secondItem="Jqf-jU-XLZ" secondAttribute="bottom" constant="8" symbolic="YES" id="nQz-Tv-nn2"/>
-                            <constraint firstItem="Jqf-jU-XLZ" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="obH-Ih-0Zi"/>
+                            <constraint firstItem="YyJ-fu-bLm" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="0gh-YC-4EN"/>
+                            <constraint firstItem="k36-pr-IYd" firstAttribute="centerX" secondItem="YyJ-fu-bLm" secondAttribute="centerX" id="L25-Mp-elP"/>
+                            <constraint firstItem="k36-pr-IYd" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="U9X-K2-b8q"/>
+                            <constraint firstItem="k36-pr-IYd" firstAttribute="top" secondItem="YyJ-fu-bLm" secondAttribute="bottom" constant="8" symbolic="YES" id="dOm-8D-1ef"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="k36-pr-IYd" secondAttribute="bottom" constant="8" symbolic="YES" id="qab-Pk-s2t"/>
+                            <constraint firstItem="k36-pr-IYd" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="ysw-cb-Dta"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="gmsMapView" destination="k36-pr-IYd" id="Hym-Gl-xdV"/>
-                        <outlet property="mapView" destination="Jqf-jU-XLZ" id="mCY-76-zAs"/>
+                        <outlet property="mapView" destination="k36-pr-IYd" id="z3A-mO-drr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

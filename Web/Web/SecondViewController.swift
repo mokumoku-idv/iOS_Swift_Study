@@ -9,66 +9,79 @@
 import UIKit
 import MapKit
 
-class SecondViewController: UIViewController, MKMapViewDelegate {
+class SecondViewController: UIViewController, MKMapViewDelegate, GMSMapViewDelegate {
 
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var gmsMapView: GMSMapView!
+    //@IBOutlet weak var mapView: MKMapView!
+    //@IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var mapView: GMSMapView!
     
     @IBAction func mapTypeSegmentPressed(sender: UISegmentedControl) {
         let segmentedControl = sender as UISegmentedControl
         switch segmentedControl.selectedSegmentIndex {
             case 0:
-                gmsMapView.mapType = kGMSTypeNormal
+                mapView.mapType = kGMSTypeNormal
             case 1:
-                gmsMapView.mapType = kGMSTypeSatellite
+                mapView.mapType = kGMSTypeSatellite
             case 2:
-                gmsMapView.mapType = kGMSTypeHybrid
+                mapView.mapType = kGMSTypeHybrid
+            case 3:
+                mapView.mapType = kGMSTypeTerrain
+            case 4:
+                mapView.mapType = kGMSTypeNone
             default:
-                gmsMapView.mapType = gmsMapView.mapType
+                mapView.mapType = mapView.mapType
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        mapView.delegate = self
-        
-        
+
         let initialLocation = CLLocation(latitude: 35.6666973, longitude: 139.730563)
-        
-        centerMapOnLocation(initialLocation)
+        //mapView.delegate = self
+        //centerMapOnLocation(initialLocation)
         
         let shop1 = Shop(title: "オービカ モッツァレラバー 東京ミッドタウン店",
             subtitle: "BAR・ラウンジ",
             discipline: "Sculpture",
             coordinate: CLLocationCoordinate2D(latitude: 35.6666973, longitude: 139.730563))
-        mapView.addAnnotation(shop1)
+        //mapView.addAnnotation(shop1)
         
         let shop2 = Shop(title: "東京ミッドタウン　東京ミッドタウン・ホールＡ",
             subtitle: "ホール・劇場",
             discipline: "Sculpture",
             coordinate: CLLocationCoordinate2D(latitude: 35.665168773482, longitude: 139.73121491527))
-        mapView.addAnnotation(shop2)
+        //mapView.addAnnotation(shop2)
         
         let shop3 = Shop(title: "ROTI 東京ミッドタウン",
             subtitle: "ハンバーガー,ワイン,ダイニングバー,アメリカ料理",
             discipline: "Sculpture",
             coordinate: CLLocationCoordinate2D(latitude: 35.666565840656, longitude: 139.73106709534))
-        mapView.addAnnotation(shop3)
+        //mapView.addAnnotation(shop3)
         
         
         
         // google map
-        var camera = GMSCameraPosition.cameraWithLatitude(-33.86, longitude: 151.20, zoom: 6)
-        self.gmsMapView.myLocationEnabled = true
-        self.gmsMapView.camera = camera
+        var camera = GMSCameraPosition.cameraWithTarget(initialLocation.coordinate, zoom: 15.0)
+        self.mapView.myLocationEnabled = true
+        self.mapView.camera = camera
+        self.mapView.delegate = self
+        //self.gmsMapView.settings.rotateGestures = false
+        self.mapView.settings.compassButton = true
+        self.mapView.settings.myLocationButton = true
+        self.mapView.settings.indoorPicker = true
         
         var marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(-33.86, 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = self.gmsMapView
+        marker.position = initialLocation.coordinate
+        marker.title = "ミッドタウン"
+        marker.snippet = "Tokyo"
+        marker.map = self.mapView
+        
+        var path = GMSMutablePath()
+        path.addCoordinate(CLLocationCoordinate2DMake(35.6666973, 139.730563))
+        path.addCoordinate(CLLocationCoordinate2DMake(35.652301, 139.749945))
+        var polyline = GMSPolyline(path: path)
+        polyline.map = self.mapView
 
     }
 
@@ -78,7 +91,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
     }
     
     
-    
+/*
     func centerMapOnLocation(location: CLLocation) {
         let regionRadius: CLLocationDistance = 500
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
@@ -105,7 +118,24 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
         }
         return nil
     }
-
+*/
+    
+    /* GMSMapViewDelegate */
+    func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+        println("You tapped at \(coordinate.latitude),\(coordinate.longitude)")
+    }
+    
+    func mapView(mapView: GMSMapView!, willMove gesture: Bool) {
+        //println("willMove")
+    }
+    
+    func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
+        //println("didChangeCameraPosition")
+    }
+    
+    func mapView(mapView: GMSMapView!, idleAtCameraPosition position: GMSCameraPosition!) {
+        //println("idleAtCameraPosition")
+    }
 
 }
 
