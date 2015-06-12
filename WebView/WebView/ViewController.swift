@@ -21,6 +21,10 @@ class ViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        var userAgent: String = UIWebView().stringByEvaluatingJavaScriptFromString("navigator.userAgent")! + " GirsbaitoApp"
+        println(userAgent)
+        NSUserDefaults.standardUserDefaults().registerDefaults(["UserAgent": userAgent])
+        
         self.webview.delegate = self
         self.loadUrl()
         self.btnStop.enabled = false
